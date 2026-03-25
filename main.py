@@ -16,7 +16,7 @@ def main():
     # Hides the streamlit main menu
     st.html("""
                 <style>
-                    MainMenu {visibility: hidden;}
+                    .stAppHeader {visibility: hidden;}
                 </style>
             """)
 
