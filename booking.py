@@ -6,7 +6,7 @@ def user_booking():
 
     @st.dialog(" ", width="small", dismissible=False)
     def select_booking():
-        st.subheader("Welcome to the :blue[USPC Ticket Booking Platform]", width="stretch")
+        st.subheader("Welcome to the :blue[USPC Ticketer]", width="stretch")
 
         options = ["Single", "Family"]
         booking_option = st.pills(
