@@ -17,7 +17,7 @@ def main():
     st.html("""
                 <style>
                     .stAppHeader {visibility: hidden;}
-                    ._profileContainer_gzau3_53 {visibility: hidden;}
+                    footer {visibility: hidden !important;}
                 </style>
             """)
 
