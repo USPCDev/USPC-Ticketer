@@ -10,7 +10,7 @@ if st.button("Back to Home Page", icon=":material/arrow_back_ios_new:", type="pr
 
 st.title("Single Booking")
 
-GOLD_TAB, PLATINUM_TAB, DIAMOND_TAB = st.tabs(["Gold 🪙", "Platinum 🔘", "Diamond 💎"], width="stretch")
+GOLD_TAB, PLATINUM_TAB, DIAMOND_TAB = st.tabs(["Gold 🟡", "Platinum ⚪", "Diamond 🔵"], width="stretch")
 
 with GOLD_TAB:
     FORM_CATEGORY = "Single" # Differentiates between Single or Family Tickets

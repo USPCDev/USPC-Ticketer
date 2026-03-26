@@ -34,7 +34,7 @@ def user_booking():
 
     with st.expander("Price & Booking Info (Please read before proceeding)", icon=":material/info:", expanded=False):
 
-        TARIFF_DETAILS_TAB, IMPORTANT_INFO_TAB = st.tabs(["Tariff Details", "Important Info"], width="stretch")
+        TARIFF_DETAILS_TAB, IMPORTANT_INFO_TAB, SUPPORT_TEAM_TAB = st.tabs(["Tariff Details", "Important Info", "Support Team"], width="stretch")
 
         with TARIFF_DETAILS_TAB:
             tariff_category_options = ["Single", "Family"]
@@ -45,26 +45,26 @@ def user_booking():
                 GOLD_COLUMN, PLATINUM_COLUMN, DIAMOND_COLUMN = st.columns([1, 1, 1], gap="small", vertical_alignment="center")
 
                 with GOLD_COLUMN:
-                    st.metric("Gold 🪙", value="£ 30", border=True)
+                    st.metric("Gold 🟡", value="£ 30", border=True)
 
                 with PLATINUM_COLUMN:
-                    st.metric("Platinum 🔘", value="£ 40", border=True)
+                    st.metric("Platinum ⚪", value="£ 40", border=True)
 
                 with DIAMOND_COLUMN:
-                    st.metric("Diamond 💎", value="£ 50", border=True)
+                    st.metric("Diamond 🔵", value="£ 50", border=True)
 
             elif tariff_category_selection == "Family":
                 st.subheader("Family Ticket Tariff Details", divider="grey")
                 GOLD_COLUMN, PLATINUM_COLUMN, DIAMOND_COLUMN = st.columns([1, 1, 1], gap="small", vertical_alignment="center")
 
                 with GOLD_COLUMN:
-                    st.metric("Gold 🪙", value="£ 100", border=True)
+                    st.metric("Gold 🟡", value="£ 100", border=True)
 
                 with PLATINUM_COLUMN:
-                    st.metric("Platinum 🔘", value="£ 150", border=True)
+                    st.metric("Platinum ⚪", value="£ 150", border=True)
 
                 with DIAMOND_COLUMN:
-                    st.metric("Diamond 💎", value="£ 175", border=True)
+                    st.metric("Diamond 🔵", value="£ 175", border=True)
 
         with IMPORTANT_INFO_TAB:
             st.subheader("Important Info", divider="grey")
@@ -78,6 +78,19 @@ def user_booking():
             st.markdown("* Once an **Ticket Order** has been confirmed, an email will be sent to you with relevant information regarding your order along with payment instructions.")
 
             st.markdown("* Please make sure that once an order has been confirmed, the payment must be made within 7 days, otherwise, the ticket will be available for other users to buy. You may need to initiate a fresh booking.")
+
+        with SUPPORT_TEAM_TAB:
+            st.subheader("Support Team", divider="grey")
+            PERSON1_COLUMN, PERSON2_COLUMN, PERSON3_COLUMN = st.columns([1, 1, 1], gap="small", vertical_alignment="center")
+
+            with PERSON1_COLUMN:
+                st.link_button("Mathew Varghese", icon=":material/call:", url="tel:+447967758301", width="stretch")
+
+            with PERSON2_COLUMN:
+                st.link_button("Binu Chacko", icon=":material/call:", url="tel:+447793975948", width="stretch")
+
+            with PERSON3_COLUMN:
+                st.link_button("Geoffry Mathew", icon=":material/call:", url="tel:+447464139381", width="stretch")
 
     EMPTY_COL_1, BOOKING_BUTTON_COLUMN, EMPTY_COL_2 = st.columns([2, 1, 2], gap="small", vertical_alignment="center")
     with BOOKING_BUTTON_COLUMN:
