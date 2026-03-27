@@ -59,7 +59,7 @@ with GOLD_TAB:
                     )
 
                     if not available_tickets:
-                        st.warning("No available tickets at this time.")
+                        st.error("No available tickets at this time! Please contact the support team.")
                         st.stop()
                     else:
                         ticket = available_tickets[0]
@@ -130,7 +130,7 @@ with PLATINUM_TAB:
                     )
 
                     if not available_tickets:
-                        st.warning("No available tickets at this time.")
+                        st.error("No available tickets at this time! Please contact the support team.")
                         st.stop()
                     else:
                         ticket = available_tickets[0]
@@ -201,7 +201,7 @@ with DIAMOND_TAB:
                     )
 
                     if not available_tickets:
-                        st.warning("No available tickets at this time.")
+                        st.error("No available tickets at this time! Please contact the support team.")
                         st.stop()
                     else:
                         ticket = available_tickets[0]
