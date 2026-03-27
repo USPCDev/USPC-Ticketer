@@ -22,7 +22,7 @@ with GOLD_TAB:
         FIRST_NAME = st.text_input("First Name", icon=":material/id_card:", key="family_gold_first_name")
         LAST_NAME = st.text_input("Last Name", icon=":material/id_card:", key="family_gold_last_name")
         EMAIL = st.text_input("Email", icon=":material/mail:", key="family_gold_email")
-        form_submitted = st.form_submit_button("Confirm 4 Orders!")
+        form_submitted = st.form_submit_button("Request one Gold Order!", icon=":material/add_shopping_cart:")
 
     # BEGIN FORM LOGIC
     if form_submitted:
@@ -93,7 +93,7 @@ with PLATINUM_TAB:
         FIRST_NAME = st.text_input("First Name", icon=":material/id_card:", key="family_platinum_first_name")
         LAST_NAME = st.text_input("Last Name", icon=":material/id_card:", key="family_platinum_last_name")
         EMAIL = st.text_input("Email", icon=":material/mail:", key="family_platinum_email")
-        form_submitted = st.form_submit_button("Confirm 4 Orders!")
+        form_submitted = st.form_submit_button("Request one Platinum Order!", icon=":material/add_shopping_cart:")
 
     # BEGIN FORM LOGIC
     if form_submitted:
@@ -164,7 +164,7 @@ with DIAMOND_TAB:
         FIRST_NAME = st.text_input("First Name", icon=":material/id_card:", key="family_diamond_first_name")
         LAST_NAME = st.text_input("Last Name", icon=":material/id_card:", key="family_diamond_last_name")
         EMAIL = st.text_input("Email", icon=":material/mail:", key="family_diamond_email")
-        form_submitted = st.form_submit_button("Confirm 4 Orders!")
+        form_submitted = st.form_submit_button("Request one Diamond Order!", icon=":material/add_shopping_cart:")
 
     # BEGIN FORM LOGIC
     if form_submitted:
