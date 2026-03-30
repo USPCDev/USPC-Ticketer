@@ -45,9 +45,9 @@ with GOLD_TAB:
 
     with st.form("family_gold_form", clear_on_submit=True, enter_to_submit=False):
         st.subheader("Gold Booking Form", divider="grey")
-        FIRST_NAME = st.text_input("First Name", icon=":material/id_card:", key="family_gold_first_name")
-        LAST_NAME = st.text_input("Last Name", icon=":material/id_card:", key="family_gold_last_name")
-        EMAIL = st.text_input("Email", icon=":material/mail:", key="family_gold_email")
+        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key="family_gold_first_name")
+        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key="family_gold_last_name")
+        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key="family_gold_email")
         family_gold_form_submitted = st.form_submit_button("Request one Gold Order!", icon=":material/add_shopping_cart:")
 
     @st.dialog("Confirm Booking", width="small")
@@ -106,9 +106,9 @@ with PLATINUM_TAB:
 
     with st.form("family_platinum_form", clear_on_submit=True, enter_to_submit=False):
         st.subheader("Platinum Booking Form", divider="grey")
-        FIRST_NAME = st.text_input("First Name", icon=":material/id_card:", key="family_platinum_first_name")
-        LAST_NAME = st.text_input("Last Name", icon=":material/id_card:", key="family_platinum_last_name")
-        EMAIL = st.text_input("Email", icon=":material/mail:", key="family_platinum_email")
+        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key="family_platinum_first_name")
+        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key="family_platinum_last_name")
+        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key="family_platinum_email")
         family_platinum_form_submitted = st.form_submit_button("Request one Platinum Order!", icon=":material/add_shopping_cart:")
 
     @st.dialog("Confirm Booking", width="small")
@@ -167,9 +167,9 @@ with DIAMOND_TAB:
 
     with st.form("family_diamond_form", clear_on_submit=True, enter_to_submit=False):
         st.subheader("Diamond Booking Form", divider="grey")
-        FIRST_NAME = st.text_input("First Name", icon=":material/id_card:", key="family_diamond_first_name")
-        LAST_NAME = st.text_input("Last Name", icon=":material/id_card:", key="family_diamond_last_name")
-        EMAIL = st.text_input("Email", icon=":material/mail:", key="family_diamond_email")
+        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key="family_diamond_first_name")
+        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key="family_diamond_last_name")
+        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key="family_diamond_email")
         family_diamond_form_submitted = st.form_submit_button("Request one Diamond Order!", icon=":material/add_shopping_cart:")
 
     @st.dialog("Confirm Booking", width="small")
