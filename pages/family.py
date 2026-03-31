@@ -90,7 +90,7 @@ with GOLD_TAB:
                     st.session_state.booked_name_family_gold = first_name
                     st.session_state.booked_email_family_gold = email
 
-                    # RESET SESSION STATES OF INPUT ELEMENTS
+                    # RESET SESSION STATES OF INPUT ELEMENTS (This is manual reset rather than using clear_on_submit=True)
                     st.session_state.family_gold_counter_first_name = st.session_state.get('family_gold_counter_first_name', 0) + 1
                     st.session_state.family_gold_counter_last_name = st.session_state.get('family_gold_counter_last_name', 0) + 1
                     st.session_state.family_gold_counter_email = st.session_state.get('family_gold_counter_email', 0) + 1

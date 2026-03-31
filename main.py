@@ -42,13 +42,10 @@ def main():
         user_booking()
     else:
         # Once selected, show navigation
-        single_booking_page = st.Page("pages/single.py", title="Single Booking", icon=":material/person:")
-        family_booking_page = st.Page("pages/family.py", title="Family Booking", icon=":material/family_group:")
-
         if st.session_state.booking_type == "single":
-            pages = st.navigation([single_booking_page])
+            pages = st.navigation([st.Page("pages/single.py", title="Single Booking", icon=":material/person:")])
         else:
-            pages = st.navigation([family_booking_page])
+            pages = st.navigation([st.Page("pages/family.py", title="Family Booking", icon=":material/family_group:")])
 
         pages.run()
 
