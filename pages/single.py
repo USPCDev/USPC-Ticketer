@@ -63,7 +63,12 @@ with GOLD_TAB:
         mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key=f"single_gold_mobile_number_{st.session_state.get('single_gold_counter_mobile_number', 0)}")
         if mobile_number_data and isinstance(mobile_number_data, dict):
             MOBILE_NUMBER = mobile_number_data.get("number")
-        single_gold_form_submitted = st.form_submit_button("Request one Gold Order!", icon=":material/add_shopping_cart:")
+
+        is_single_gold_disabled = AVAILABLE_TICKET_COUNT is None or AVAILABLE_TICKET_COUNT == 0
+        single_gold_form_button_label = "Request one **Gold** Order!" if not is_single_gold_disabled else "No More Tickets Available!"
+        single_gold_form_button_icon = ":material/add_shopping_cart:" if not is_single_gold_disabled else ":material/block:"
+        
+        single_gold_form_submitted = st.form_submit_button(single_gold_form_button_label, icon=single_gold_form_button_icon, disabled=is_single_gold_disabled)
     
     @st.dialog("Confirm Booking", width="small")
     def show_single_gold_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
@@ -145,7 +150,12 @@ with PLATINUM_TAB:
         mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key=f"single_platinum_mobile_number_{st.session_state.get('single_platinum_counter_mobile_number', 0)}")
         if mobile_number_data and isinstance(mobile_number_data, dict):
             MOBILE_NUMBER = mobile_number_data.get("number")
-        single_platinum_form_submitted = st.form_submit_button("Request one Platinum Order!", icon=":material/add_shopping_cart:")
+
+        is_single_platinum_disabled = AVAILABLE_TICKET_COUNT is None or AVAILABLE_TICKET_COUNT == 0
+        single_platinum_form_button_label = "Request one **Platinum** Order!" if not is_single_platinum_disabled else "No More Tickets Available!"
+        single_platinum_form_button_icon = ":material/add_shopping_cart:" if not is_single_platinum_disabled else ":material/block:"
+
+        single_platinum_form_submitted = st.form_submit_button(single_platinum_form_button_label, icon=single_platinum_form_button_icon, disabled=is_single_platinum_disabled)
 
     @st.dialog("Confirm Booking", width="small")
     def show_single_platinum_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
@@ -227,7 +237,12 @@ with DIAMOND_TAB:
         mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key=f"single_diamond_mobile_number_{st.session_state.get('single_diamond_counter_mobile_number', 0)}")
         if mobile_number_data and isinstance(mobile_number_data, dict):
             MOBILE_NUMBER = mobile_number_data.get("number")
-        single_diamond_form_submitted = st.form_submit_button("Request one Diamond Order!", icon=":material/add_shopping_cart:")
+
+        is_single_diamond_disabled = AVAILABLE_TICKET_COUNT is None or AVAILABLE_TICKET_COUNT == 0
+        single_diamond_form_button_label = "Request one **Diamond** Order!" if not is_single_diamond_disabled else "No More Tickets Available!"
+        single_diamond_form_button_icon = ":material/add_shopping_cart:" if not is_single_diamond_disabled else ":material/block:"
+
+        single_diamond_form_submitted = st.form_submit_button(single_diamond_form_button_label, icon=single_diamond_form_button_icon, disabled=is_single_diamond_disabled)
 
     @st.dialog("Confirm Booking", width="small")
     def show_single_diamond_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
