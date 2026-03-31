@@ -43,9 +43,20 @@ with GOLD_TAB:
     EVENT_ORDER_ID = 73312442 # This is the Event Order ID
     FORM_TICKET_TYPE = "Family - Gold" # This is the Ticket Type initialised in the form
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Family - Gold (£100)')"
+    AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_unassigned_family_ticket_count(AVAILABLE_TICKET_FILTER_FORMULA)
 
     with st.form("family_gold_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Gold Booking Form - :green[£100]/Family", divider="grey")
+        TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
+        with TICKET_TITLE_AND_STATUS_CONTAINER:
+
+            TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2, 1], gap="small", vertical_alignment="center", border=False)
+
+            with TICKET_BOOKING_TYPE_COLUMN:
+                st.subheader("Gold Booking Form - :green[£100]/Family", divider="grey")
+
+            with TICKET_COUNT_COLUMN:
+                st.metric("Remaining Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"family_gold_first_name_{st.session_state.get('family_gold_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"family_gold_last_name_{st.session_state.get('family_gold_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"family_gold_email_{st.session_state.get('family_gold_counter_email', 0)}")
@@ -114,9 +125,20 @@ with PLATINUM_TAB:
     EVENT_ORDER_ID = 73312475 # This is the Event Order ID
     FORM_TICKET_TYPE = "Family - Platinum" # This is the Ticket Type initialised in the form
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Family - Platinum (£150)')"
+    AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_unassigned_family_ticket_count(AVAILABLE_TICKET_FILTER_FORMULA)
 
     with st.form("family_platinum_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Platinum Booking Form - :green[£150]/Family", divider="grey")
+        TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
+        with TICKET_TITLE_AND_STATUS_CONTAINER:
+
+            TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2.5, 1], gap="small", vertical_alignment="center", border=False)
+
+            with TICKET_BOOKING_TYPE_COLUMN:
+                st.subheader("Platinum Booking Form - :green[£150]/Family", divider="grey")
+
+            with TICKET_COUNT_COLUMN:
+                st.metric("Remaining Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"family_platinum_first_name_{st.session_state.get('family_platinum_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"family_platinum_last_name_{st.session_state.get('family_platinum_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"family_platinum_email_{st.session_state.get('family_platinum_counter_email', 0)}")
@@ -185,9 +207,20 @@ with DIAMOND_TAB:
     EVENT_ORDER_ID = 73312496 # This is the Event Order ID
     FORM_TICKET_TYPE = "Family - Diamond" # This is the Ticket Type initialised in the form
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Family - Diamond (£175)')"
+    AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_unassigned_family_ticket_count(AVAILABLE_TICKET_FILTER_FORMULA)
 
     with st.form("family_diamond_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Diamond Booking Form - :green[£175]/Family", divider="grey")
+        TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
+        with TICKET_TITLE_AND_STATUS_CONTAINER:
+
+            TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2.5, 1], gap="small", vertical_alignment="center", border=False)
+
+            with TICKET_BOOKING_TYPE_COLUMN:
+                st.subheader("Diamond Booking Form - :green[£175]/Family", divider="grey")
+
+            with TICKET_COUNT_COLUMN:
+                st.metric("Remaining Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"family_diamond_first_name_{st.session_state.get('family_diamond_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"family_diamond_last_name_{st.session_state.get('family_diamond_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"family_diamond_email_{st.session_state.get('family_diamond_counter_email', 0)}")
