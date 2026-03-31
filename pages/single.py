@@ -45,7 +45,7 @@ with GOLD_TAB:
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Single - Gold (£30)')"
 
     with st.form("single_gold_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Gold Booking Form - £30/Person", divider="grey")
+        st.subheader("Gold Booking Form - :green[£30]/Person", divider="grey")
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_gold_first_name_{st.session_state.get('single_gold_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_gold_last_name_{st.session_state.get('single_gold_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"single_gold_email_{st.session_state.get('single_gold_counter_email', 0)}")
@@ -116,7 +116,7 @@ with PLATINUM_TAB:
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Single - Platinum (£40)')"
 
     with st.form("single_platinum_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Platinum Booking Form - £40/Person", divider="grey")
+        st.subheader("Platinum Booking Form - :green[£40]/Person", divider="grey")
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_platinum_first_name_{st.session_state.get('single_platinum_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_platinum_last_name_{st.session_state.get('single_platinum_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"single_platinum_email_{st.session_state.get('single_platinum_counter_email', 0)}")
@@ -187,7 +187,7 @@ with DIAMOND_TAB:
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Single - Diamond (£50)')"
 
     with st.form("single_diamond_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Diamond Booking Form - £50/Person", divider="grey")
+        st.subheader("Diamond Booking Form - :green[£50]/Person", divider="grey")
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_diamond_first_name_{st.session_state.get('single_diamond_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_diamond_last_name_{st.session_state.get('single_diamond_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"single_diamond_email_{st.session_state.get('single_diamond_counter_email', 0)}")

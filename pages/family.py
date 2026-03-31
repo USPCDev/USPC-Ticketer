@@ -45,7 +45,7 @@ with GOLD_TAB:
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Family - Gold (£100)')"
 
     with st.form("family_gold_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Gold Booking Form - £100/Family", divider="grey")
+        st.subheader("Gold Booking Form - :green[£100]/Family", divider="grey")
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"family_gold_first_name_{st.session_state.get('family_gold_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"family_gold_last_name_{st.session_state.get('family_gold_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"family_gold_email_{st.session_state.get('family_gold_counter_email', 0)}")
@@ -116,7 +116,7 @@ with PLATINUM_TAB:
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Family - Platinum (£150)')"
 
     with st.form("family_platinum_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Platinum Booking Form - £150/Family", divider="grey")
+        st.subheader("Platinum Booking Form - :green[£150]/Family", divider="grey")
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"family_platinum_first_name_{st.session_state.get('family_platinum_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"family_platinum_last_name_{st.session_state.get('family_platinum_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"family_platinum_email_{st.session_state.get('family_platinum_counter_email', 0)}")
@@ -187,7 +187,7 @@ with DIAMOND_TAB:
     AVAILABLE_TICKET_FILTER_FORMULA = "AND({Assigned} = FALSE(), {Ticket Type} = 'Family - Diamond (£175)')"
 
     with st.form("family_diamond_form", clear_on_submit=False, enter_to_submit=False):
-        st.subheader("Diamond Booking Form - £175/Family", divider="grey")
+        st.subheader("Diamond Booking Form - :green[£175]/Family", divider="grey")
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"family_diamond_first_name_{st.session_state.get('family_diamond_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"family_diamond_last_name_{st.session_state.get('family_diamond_counter_last_name', 0)}")
         EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"family_diamond_email_{st.session_state.get('family_diamond_counter_email', 0)}")
