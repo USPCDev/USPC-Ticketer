@@ -46,10 +46,10 @@ with GOLD_TAB:
 
     with st.form("single_gold_form", clear_on_submit=False, enter_to_submit=False):
         st.subheader("Gold Booking Form - £30/Person", divider="grey")
-        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key="single_gold_first_name")
-        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key="single_gold_last_name")
-        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key="single_gold_email")
-        mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key="single_gold_mobile_number")
+        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_gold_first_name_{st.session_state.get('single_gold_counter_first_name', 0)}")
+        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_gold_last_name_{st.session_state.get('single_gold_counter_last_name', 0)}")
+        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"single_gold_email_{st.session_state.get('single_gold_counter_email', 0)}")
+        mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key=f"single_gold_mobile_number_{st.session_state.get('single_gold_counter_mobile_number', 0)}")
         if mobile_number_data and isinstance(mobile_number_data, dict):
             MOBILE_NUMBER = mobile_number_data.get("number")
         single_gold_form_submitted = st.form_submit_button("Request one Gold Order!", icon=":material/add_shopping_cart:")
@@ -66,6 +66,12 @@ with GOLD_TAB:
                     st.session_state.booking_success_single_gold = True
                     st.session_state.booked_name_single_gold = first_name
                     st.session_state.booked_email_single_gold = email
+
+                    # RESET SESSION STATES OF INPUT ELEMENTS
+                    st.session_state.single_gold_counter_first_name = st.session_state.get('single_gold_counter_first_name', 0) + 1
+                    st.session_state.single_gold_counter_last_name = st.session_state.get('single_gold_counter_last_name', 0) + 1
+                    st.session_state.single_gold_counter_email = st.session_state.get('single_gold_counter_email', 0) + 1
+                    st.session_state.single_gold_counter_mobile_number = st.session_state.get('single_gold_counter_mobile_number', 0) + 1
                     st.rerun()
 
                 except Exception as e:
@@ -111,10 +117,10 @@ with PLATINUM_TAB:
 
     with st.form("single_platinum_form", clear_on_submit=False, enter_to_submit=False):
         st.subheader("Platinum Booking Form - £40/Person", divider="grey")
-        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key="single_platinum_first_name")
-        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key="single_platinum_last_name")
-        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key="single_platinum_email")
-        mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key="single_platinum_mobile_number")
+        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_platinum_first_name_{st.session_state.get('single_platinum_counter_first_name', 0)}")
+        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_platinum_last_name_{st.session_state.get('single_platinum_counter_last_name', 0)}")
+        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"single_platinum_email_{st.session_state.get('single_platinum_counter_email', 0)}")
+        mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key=f"single_platinum_mobile_number_{st.session_state.get('single_platinum_counter_mobile_number', 0)}")
         if mobile_number_data and isinstance(mobile_number_data, dict):
             MOBILE_NUMBER = mobile_number_data.get("number")
         single_platinum_form_submitted = st.form_submit_button("Request one Platinum Order!", icon=":material/add_shopping_cart:")
@@ -131,6 +137,12 @@ with PLATINUM_TAB:
                     st.session_state.booking_success_single_platinum = True
                     st.session_state.booked_name_single_platinum = first_name
                     st.session_state.booked_email_single_platinum = email
+
+                    # RESET SESSION STATES OF INPUT ELEMENTS
+                    st.session_state.single_platinum_counter_first_name = st.session_state.get('single_platinum_counter_first_name', 0) + 1
+                    st.session_state.single_platinum_counter_last_name = st.session_state.get('single_platinum_counter_last_name', 0) + 1
+                    st.session_state.single_platinum_counter_email = st.session_state.get('single_platinum_counter_email', 0) + 1
+                    st.session_state.single_platinum_counter_mobile_number = st.session_state.get('single_platinum_counter_mobile_number', 0) + 1
                     st.rerun()
 
                 except Exception as e:
@@ -176,10 +188,10 @@ with DIAMOND_TAB:
 
     with st.form("single_diamond_form", clear_on_submit=False, enter_to_submit=False):
         st.subheader("Diamond Booking Form - £50/Person", divider="grey")
-        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key="single_diamond_first_name")
-        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key="single_diamond_last_name")
-        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key="single_diamond_email")
-        mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key="single_diamond_mobile_number")
+        FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_diamond_first_name_{st.session_state.get('single_diamond_counter_first_name', 0)}")
+        LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_diamond_last_name_{st.session_state.get('single_diamond_counter_last_name', 0)}")
+        EMAIL = st.text_input("Email", placeholder="Enter your email", icon=":material/mail:", key=f"single_diamond_email_{st.session_state.get('single_diamond_counter_email', 0)}")
+        mobile_number_data = st_phone_number("Mobile Number", placeholder="Enter your mobile number", default_country="GB", key=f"single_diamond_mobile_number_{st.session_state.get('single_diamond_counter_mobile_number', 0)}")
         if mobile_number_data and isinstance(mobile_number_data, dict):
             MOBILE_NUMBER = mobile_number_data.get("number")
         single_diamond_form_submitted = st.form_submit_button("Request one Diamond Order!", icon=":material/add_shopping_cart:")
@@ -196,6 +208,12 @@ with DIAMOND_TAB:
                     st.session_state.booking_success_single_diamond = True
                     st.session_state.booked_name_single_diamond = first_name
                     st.session_state.booked_email_single_diamond = email
+
+                    # RESET SESSION STATES OF INPUT ELEMENTS
+                    st.session_state.single_diamond_counter_first_name = st.session_state.get('single_diamond_counter_first_name', 0) + 1
+                    st.session_state.single_diamond_counter_last_name = st.session_state.get('single_diamond_counter_last_name', 0) + 1
+                    st.session_state.single_diamond_counter_email = st.session_state.get('single_diamond_counter_email', 0) + 1
+                    st.session_state.single_diamond_counter_mobile_number = st.session_state.get('single_diamond_counter_mobile_number', 0) + 1
                     st.rerun()
 
                 except Exception as e:
