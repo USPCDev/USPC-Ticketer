@@ -100,6 +100,14 @@ def airtable_get_unassigned_single_ticket_count(filter_formula):
     # Using fields=["id"] to only fetch record IDs, which is more efficient
     return len(single_tickets_base.all(formula=filter_formula, fields=["Auto ID"]))
 
+def airtable_get_total_single_ticket_count(filter_formula):
+    api = Api(st.secrets["airtable"]["PAT"])
+    base = api.base(st.secrets["airtable"]["BASE_ID"])
+    single_tickets_base = base.table("Single Tickets")
+
+    # RETURN THE LENGTH OF ALL DATA
+    return len(single_tickets_base.all(formula=filter_formula, fields=["Auto ID"]))
+
 def airtable_get_unassigned_family_ticket_count(filter_formula):
     api = Api(st.secrets["airtable"]["PAT"])
     base = api.base(st.secrets["airtable"]["BASE_ID"])
@@ -107,4 +115,12 @@ def airtable_get_unassigned_family_ticket_count(filter_formula):
 
     # RETURN THE LENGTH OF THE FILTERED DATA
     # Using fields=["id"] to only fetch record IDs, which is more efficient
+    return len(family_tickets_base.all(formula=filter_formula, fields=["Auto ID"]))
+
+def airtable_get_total_family_ticket_count(filter_formula):
+    api = Api(st.secrets["airtable"]["PAT"])
+    base = api.base(st.secrets["airtable"]["BASE_ID"])
+    family_tickets_base = base.table("Family Tickets")
+
+    # RETURN THE LENGTH OF ALL DATA
     return len(family_tickets_base.all(formula=filter_formula, fields=["Auto ID"]))
