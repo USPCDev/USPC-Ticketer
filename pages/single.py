@@ -6,11 +6,6 @@ from modules import airtable_functions
 
 #ticketer_bg.enable_svg_bg()
 
-if st.button("Back to Home Page", icon=":material/arrow_back_ios_new:", type="primary"):
-    if "booking_type" in st.session_state:
-        del st.session_state.booking_type
-    st.rerun()
-
 horizontal_style="""<style class="hide-element">
                         .element-container:has(.hide-element) {
                             display: none;
@@ -33,6 +28,16 @@ def st_horizontal():
     with st.container():
         st.markdown('<span class="hide-element horizontal-marker"></span>', unsafe_allow_html=True)
         yield
+
+with st_horizontal():
+    if st.button(":material/arrow_back_ios_new:", type="primary", help="Back to Home Page"):
+        if "booking_type" in st.session_state:
+            del st.session_state.booking_type
+        st.rerun()
+
+    if st.button("Switch to **Family** Booking"):
+        st.session_state.booking_type = "family"
+        st.rerun()
 
 AVAILABLE_TICKET_FORMULA = "AND({Assigned} = FALSE())"
 AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_total_single_ticket_count(AVAILABLE_TICKET_FORMULA)
