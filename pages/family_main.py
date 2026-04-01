@@ -46,13 +46,10 @@ def st_horizontal():
 
 with st_horizontal():
     if st.button(":material/arrow_back_ios_new:", type="primary", help="Back to Home Page"):
-        if "booking_type" in st.session_state:
-            del st.session_state.booking_type
-        st.rerun()
+        st.switch_page("home.py")
 
     if st.button("Switch to **Single** Booking"):
-        st.session_state.booking_type = "single"
-        st.rerun()
+        st.switch_page("pages/single_main.py")
 
 AVAILABLE_TICKET_FORMULA = "AND({Assigned} = FALSE())"
 AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_total_family_ticket_count(AVAILABLE_TICKET_FORMULA)

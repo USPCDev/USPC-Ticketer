@@ -1,5 +1,4 @@
 import streamlit as st
-from booking import user_booking
 from utils import ticketer_bg
 
 #ticketer_bg.enable_svg_bg()
@@ -37,17 +36,18 @@ def main():
                     }
                 </style>
             """)
+    
+    nav_pages = [
+        st.Page("home.py"),
+        st.Page("pages/single_main.py"),
+        st.Page("pages/family_main.py"),
+        st.Page("pages/offline_single_main.py"),
+        st.Page("pages/offline_family_main.py"),
+    ]
 
-    if "booking_type" not in st.session_state:
-        user_booking()
-    else:
-        # Once selected, show navigation
-        if st.session_state.booking_type == "single":
-            pages = st.navigation([st.Page("pages/single.py", title="Single Booking", icon=":material/person:")])
-        else:
-            pages = st.navigation([st.Page("pages/family.py", title="Family Booking", icon=":material/family_group:")])
-
-        pages.run()
+    ticketer_pages = st.navigation(pages=nav_pages, position="hidden")
+    
+    ticketer_pages.run()
 
 if __name__ == '__main__':
     main()
