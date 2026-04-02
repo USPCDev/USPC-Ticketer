@@ -88,7 +88,7 @@ with GOLD_TAB:
         #if mobile_number_data and isinstance(mobile_number_data, dict):
             #MOBILE_NUMBER = mobile_number_data.get("number")
 
-        MOBILE_NUMBER = st.text_input("Mobile Number", placeholder="Enter your mobile number (e.g.: +447xxxxxxxxx)", icon=":material/call:", help="Please enter the correct mobile number in the provided format without spaces.", key=f"single_gold_mobile_number_{st.session_state.get('single_gold_counter_mobile_number', 0)}")
+        MOBILE_NUMBER = st.text_input("Mobile Number (All countries supported!)", placeholder="Enter your mobile number (e.g.: +447xxxxxxxxx)", icon=":material/call:", help="Please enter the correct mobile number in the provided format without spaces.", key=f"single_gold_mobile_number_{st.session_state.get('single_gold_counter_mobile_number', 0)}")
 
         is_single_gold_disabled = AVAILABLE_TICKET_COUNT is None or AVAILABLE_TICKET_COUNT == 0
         single_gold_form_button_label = "Request one **Gold** Order!" if not is_single_gold_disabled else "No More Tickets Available!"
@@ -126,7 +126,7 @@ with GOLD_TAB:
         if not FIRST_NAME or not LAST_NAME or not MOBILE_NUMBER or not EMAIL:
             st.error("Please enter all the information!")
         elif not mobile_number_verifier(MOBILE_NUMBER):
-            st.error("Please enter a valid mobile number in the format, +447xxxxxxxxx!")
+            st.error("Please enter a valid mobile number in the example format, +447xxxxxxxxx, without spaces!")
         else:
             # Store data to be used in dialog
             st.session_state.pending_booking_single_gold = {
@@ -183,7 +183,7 @@ with PLATINUM_TAB:
         #if mobile_number_data and isinstance(mobile_number_data, dict):
             #MOBILE_NUMBER = mobile_number_data.get("number")
 
-        MOBILE_NUMBER = st.text_input("Mobile Number", placeholder="Enter your mobile number (e.g.: +447xxxxxxxxx)", icon=":material/call:", help="Please enter the correct mobile number in the provided format without spaces.", key=f"single_platinum_mobile_number_{st.session_state.get('single_platinum_counter_mobile_number', 0)}")
+        MOBILE_NUMBER = st.text_input("Mobile Number (All countries supported!)", placeholder="Enter your mobile number (e.g.: +447xxxxxxxxx)", icon=":material/call:", help="Please enter the correct mobile number in the provided format without spaces.", key=f"single_platinum_mobile_number_{st.session_state.get('single_platinum_counter_mobile_number', 0)}")
 
         is_single_platinum_disabled = AVAILABLE_TICKET_COUNT is None or AVAILABLE_TICKET_COUNT == 0
         single_platinum_form_button_label = "Request one **Platinum** Order!" if not is_single_platinum_disabled else "No More Tickets Available!"
@@ -221,7 +221,7 @@ with PLATINUM_TAB:
         if not FIRST_NAME or not LAST_NAME or not MOBILE_NUMBER or not EMAIL:
             st.error("Please enter all the information!")
         elif not mobile_number_verifier(MOBILE_NUMBER):
-            st.error("Please enter a valid mobile number in the format, +447xxxxxxxxx!")
+            st.error("Please enter a valid mobile number in the example format, +447xxxxxxxxx, without spaces!")
         else:
             # Store data to be used in dialog
             st.session_state.pending_booking_single_platinum = {
@@ -278,7 +278,7 @@ with DIAMOND_TAB:
         #if mobile_number_data and isinstance(mobile_number_data, dict):
             #MOBILE_NUMBER = mobile_number_data.get("number")
 
-        MOBILE_NUMBER = st.text_input("Mobile Number", placeholder="Enter your mobile number (e.g.: +447xxxxxxxxx)", icon=":material/call:", help="Please enter the correct mobile number in the provided format without spaces.", key=f"single_diamond_mobile_number_{st.session_state.get('single_diamond_counter_mobile_number', 0)}")
+        MOBILE_NUMBER = st.text_input("Mobile Number (All countries supported!)", placeholder="Enter your mobile number (e.g.: +447xxxxxxxxx)", icon=":material/call:", help="Please enter the correct mobile number in the provided format without spaces.", key=f"single_diamond_mobile_number_{st.session_state.get('single_diamond_counter_mobile_number', 0)}")
 
         is_single_diamond_disabled = AVAILABLE_TICKET_COUNT is None or AVAILABLE_TICKET_COUNT == 0
         single_diamond_form_button_label = "Request one **Diamond** Order!" if not is_single_diamond_disabled else "No More Tickets Available!"
@@ -316,7 +316,7 @@ with DIAMOND_TAB:
         if not FIRST_NAME or not LAST_NAME or not MOBILE_NUMBER or not EMAIL:
             st.error("Please enter all the information!")
         elif not mobile_number_verifier(MOBILE_NUMBER):
-            st.error("Please enter a valid mobile number in the format, +447xxxxxxxxx!")
+            st.error("Please enter a valid mobile number in the example format, +447xxxxxxxxx, without spaces!")
         else:
             # Store data to be used in dialog
             st.session_state.pending_booking_single_diamond = {
