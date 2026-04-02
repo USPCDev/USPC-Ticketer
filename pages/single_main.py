@@ -53,7 +53,8 @@ with st_horizontal():
 
 AVAILABLE_TICKET_FORMULA = "AND({Assigned} = FALSE())"
 AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_total_single_ticket_count(AVAILABLE_TICKET_FORMULA)
-st.title(f"Single Booking ({AVAILABLE_TICKET_COUNT} tickets left!)")
+single_title = "Single Booking" if AVAILABLE_TICKET_COUNT > 150 else f"Single Booking ({AVAILABLE_TICKET_COUNT} total tickets left!)"
+st.title(single_title)
 
 GOLD_TAB, PLATINUM_TAB, DIAMOND_TAB = st.tabs(["Gold 🟡", "Platinum ⚪", "Diamond 🔵"], width="stretch")
 
@@ -65,16 +66,20 @@ with GOLD_TAB:
     AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_unassigned_single_ticket_count(AVAILABLE_TICKET_FILTER_FORMULA)
 
     with st.form("single_gold_form", clear_on_submit=False, enter_to_submit=False):
-        TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
-        with TICKET_TITLE_AND_STATUS_CONTAINER:
+        if AVAILABLE_TICKET_COUNT < 50:
+            TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
+            with TICKET_TITLE_AND_STATUS_CONTAINER:
 
-            TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2, 1], gap="small", vertical_alignment="center", border=False)
+                TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2, 1], gap="small", vertical_alignment="center", border=False)
 
-            with TICKET_BOOKING_TYPE_COLUMN:
-                st.subheader("Gold Booking Form - :green[£30]/Person", divider="grey")
+                with TICKET_BOOKING_TYPE_COLUMN:
+                    st.subheader("Gold Booking Form - :green[£30]/Person", divider="grey")
 
-            with TICKET_COUNT_COLUMN:
-                st.metric("Remaining Gold Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+                with TICKET_COUNT_COLUMN:
+                    st.metric("Remaining Gold Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+
+        else:
+            st.subheader("Gold Booking Form - :green[£30]/Person", divider="grey")
 
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_gold_first_name_{st.session_state.get('single_gold_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_gold_last_name_{st.session_state.get('single_gold_counter_last_name', 0)}")
@@ -156,16 +161,20 @@ with PLATINUM_TAB:
     AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_unassigned_single_ticket_count(AVAILABLE_TICKET_FILTER_FORMULA)
 
     with st.form("single_platinum_form", clear_on_submit=False, enter_to_submit=False):
-        TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
-        with TICKET_TITLE_AND_STATUS_CONTAINER:
+        if AVAILABLE_TICKET_COUNT < 50:
+            TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
+            with TICKET_TITLE_AND_STATUS_CONTAINER:
 
-            TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2.5, 1], gap="small", vertical_alignment="center", border=False)
+                TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2.5, 1], gap="small", vertical_alignment="center", border=False)
 
-            with TICKET_BOOKING_TYPE_COLUMN:
-                st.subheader("Platinum Booking Form - :green[£40]/Person", divider="grey")
+                with TICKET_BOOKING_TYPE_COLUMN:
+                    st.subheader("Platinum Booking Form - :green[£40]/Person", divider="grey")
 
-            with TICKET_COUNT_COLUMN:
-                st.metric("Remaining Platinum Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+                with TICKET_COUNT_COLUMN:
+                    st.metric("Remaining Platinum Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+
+        else:
+            st.subheader("Platinum Booking Form - :green[£40]/Person", divider="grey")
 
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_platinum_first_name_{st.session_state.get('single_platinum_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_platinum_last_name_{st.session_state.get('single_platinum_counter_last_name', 0)}")
@@ -247,16 +256,20 @@ with DIAMOND_TAB:
     AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_unassigned_single_ticket_count(AVAILABLE_TICKET_FILTER_FORMULA)
 
     with st.form("single_diamond_form", clear_on_submit=False, enter_to_submit=False):
-        TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
-        with TICKET_TITLE_AND_STATUS_CONTAINER:
+        if AVAILABLE_TICKET_COUNT < 50:
+            TICKET_TITLE_AND_STATUS_CONTAINER = st.container(border=False)
+            with TICKET_TITLE_AND_STATUS_CONTAINER:
 
-            TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2.5, 1], gap="small", vertical_alignment="center", border=False)
+                TICKET_BOOKING_TYPE_COLUMN, TICKET_COUNT_COLUMN = st.columns([2.5, 1], gap="small", vertical_alignment="center", border=False)
 
-            with TICKET_BOOKING_TYPE_COLUMN:
-                st.subheader("Diamond Booking Form - :green[£50]/Person", divider="grey")
+                with TICKET_BOOKING_TYPE_COLUMN:
+                    st.subheader("Diamond Booking Form - :green[£50]/Person", divider="grey")
 
-            with TICKET_COUNT_COLUMN:
-                st.metric("Remaining Diamond Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+                with TICKET_COUNT_COLUMN:
+                    st.metric("Remaining Diamond Tickets", value=f"{AVAILABLE_TICKET_COUNT} Left!", border=True, label_visibility="visible")
+
+        else:
+            st.subheader("Diamond Booking Form - :green[£50]/Person", divider="grey")
 
         FIRST_NAME = st.text_input("First Name", placeholder="Enter your first name", icon=":material/id_card:", key=f"single_diamond_first_name_{st.session_state.get('single_diamond_counter_first_name', 0)}")
         LAST_NAME = st.text_input("Last Name", placeholder="Enter your last name", icon=":material/id_card:", key=f"single_diamond_last_name_{st.session_state.get('single_diamond_counter_last_name', 0)}")
