@@ -13,12 +13,13 @@ def booking_success_message(name, email):
 
 def mobile_number_verifier(mobile_number):
     try:
-        # Enforce format: +447xxxxxxxxx
-        if not re.match(r"^\+447\d{9}$", mobile_number):
+        # Enforce format: +<country_code><number> (digits only, no spaces)
+        if not re.match(r"^\+\d+$", mobile_number):
             return False
         
         # Double check with phonenumbers
-        parsed = phonenumbers.parse(mobile_number, "GB")
+        # Passing None for region allows auto-detection from international format
+        parsed = phonenumbers.parse(mobile_number, None)
         return phonenumbers.is_valid_number(parsed)
     
     except:
