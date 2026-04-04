@@ -9,7 +9,7 @@ import re
 #ticketer_bg.enable_svg_bg()
 
 def booking_success_message(name, email, order_id, ticket_type, ticket_price):
-    return f"##### Thank you for placing an order, **{name}**!\nYour order details will be sent to your email, **{email}**, shortly. If you haven't received any order confirmation email, please contact the support team whose numbers are provided in the homepage. Please pay the required *amount* using the correct *reference*, as provided below, in the mentioned bank details. Thank you once again!\n##### Order Summary:\nBooking Type: **{ticket_type}**\n\nReference No.: **{order_id}**\n\nPrice: **£{ticket_price}.00**\n##### Bank Details:\nAccount Name: **United Shalom Pentecostal Church**\n\nAccount No.: **01724037**\n\nSort Code: **40-31-30**"
+    return f"##### Thank you for placing an order, **{name}**!\nYour order details will be sent to your email, **{email}**, shortly. If you haven't received any order confirmation email, please contact the support team whose numbers are provided in the homepage. Please pay the required *amount* using the correct *reference*, as provided below, in the mentioned bank details. Thank you once again!\n##### Order Summary:\nBooking Type: **{ticket_type}**\n\nReference No.: **{order_id}**\n\nPrice: **£{ticket_price}.00**\n##### Bank Details:\nAccount Name: **United Shalom Pentecostal Church**\n\nAccount No.: **01724037**\n\nSort Code: **40-31-30**\n\nOnce payment has been made, our back office team will verify it, and upon successful verification, the **ticket** will be sent to your email."
 
 def mobile_number_verifier(mobile_number):
     try:
@@ -79,6 +79,9 @@ with GOLD_TAB:
         del st.session_state.booked_ticket_price_single_gold
         if "pending_booking_single_gold" in st.session_state:
             del st.session_state.pending_booking_single_gold
+
+        if st.button("Close Message & Refresh", type="secondary", width="stretch", key="single_gold_refresh_button"):
+            st.rerun()
 
     FORM_CATEGORY = "Single" # Differentiates between Single or Family Tickets
     EVENT_ORDER_ID = 73312205 # This is the Event Order ID
@@ -183,6 +186,9 @@ with PLATINUM_TAB:
         if "pending_booking_single_platinum" in st.session_state:
             del st.session_state.pending_booking_single_platinum
 
+        if st.button("Close Message & Refresh", type="secondary", width="stretch", key="single_platinum_refresh_button"):
+            st.rerun()
+
     FORM_CATEGORY = "Single" # Differentiates between Single or Family Tickets
     EVENT_ORDER_ID = 73312270 # This is the Event Order ID
     FORM_TICKET_TYPE = "Single - Platinum" # This is the Ticket Type initialised in the form
@@ -285,6 +291,9 @@ with DIAMOND_TAB:
         del st.session_state.booked_ticket_price_single_diamond
         if "pending_booking_single_diamond" in st.session_state:
             del st.session_state.pending_booking_single_diamond
+
+        if st.button("Close Message & Refresh", type="secondary", width="stretch", key="single_diamond_refresh_button"):
+            st.rerun()
 
     FORM_CATEGORY = "Single" # Differentiates between Single or Family Tickets
     EVENT_ORDER_ID = 73312306 # This is the Event Order ID
