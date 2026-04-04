@@ -60,7 +60,7 @@ AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_total_single_ticket_cou
 single_title = "Single Booking" if AVAILABLE_TICKET_COUNT > 150 else f"Single Booking ({AVAILABLE_TICKET_COUNT} total tickets left!)"
 st.title(single_title)
 
-GOLD_TAB, PLATINUM_TAB, DIAMOND_TAB = st.tabs(["Gold 🟡", "Platinum ⚪", "Diamond 🔵"], width="stretch")
+DIAMOND_TAB, PLATINUM_TAB, GOLD_TAB = st.tabs(["**:blue-background[:blue[DIAMOND]]** 🔵", "**:grey-background[:grey[PLATINUM]]** ⚪", "**:orange-background[:orange[GOLD]]** 🟡"], width="stretch")
 
 with GOLD_TAB:
 

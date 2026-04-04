@@ -60,7 +60,7 @@ AVAILABLE_TICKET_COUNT = airtable_functions.airtable_get_total_family_ticket_cou
 family_title = "Family Booking" if AVAILABLE_TICKET_COUNT > 37 else f"Family Booking ({AVAILABLE_TICKET_COUNT} total tickets left!)"
 st.title(family_title)
 
-GOLD_TAB, PLATINUM_TAB, DIAMOND_TAB = st.tabs(["Gold 🟡", "Platinum ⚪", "Diamond 🔵"], width="stretch")
+DIAMOND_TAB, PLATINUM_TAB, GOLD_TAB = st.tabs(["**:blue-background[:blue[DIAMOND]]** 🔵", "**:grey-background[:grey[PLATINUM]]** ⚪", "**:orange-background[:orange[GOLD]]** 🟡"], width="stretch")
 
 with GOLD_TAB:
 
