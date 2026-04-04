@@ -11,14 +11,18 @@ def main():
         layout="centered",
         menu_items={
             "Report a bug": "mailto:jeffrygeorge58@gmail.com",
-            "About": "USPC Ticket Booking Application Version 1.0 ® 2026 All Rights Reserved"
+            "About": "USPC Ticket Booking Application Version 1.0 ® 2026. All Rights Reserved."
         }
     )
 
     # Hides the streamlit app header
     st.html("""
                 <style>
-                    .stAppHeader {visibility: hidden;}
+                    .stAppHeader {
+                        background: rgba(255,248,236,0.5);
+                        -webkit-backdrop-filter: blur(5px);
+                        backdrop-filter: blur(5px);
+                    }
                 </style>
             """)
     

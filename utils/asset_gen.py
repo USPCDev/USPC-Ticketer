@@ -61,7 +61,7 @@ def sub_home_title(SUB_HOME_TITLE):
                     font-size: calc(1.0em + 2.5vmin) !important;
                     font-family: 'Montserrat', sans-serif;
                     font-weight: bold;
-                    color: black !important;
+                    color: rgb(5, 31, 170) !important;
                 }
             </style>
             """, unsafe_allow_html = True)

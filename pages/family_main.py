@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_phone_number import st_phone_number
 from utils import ticketer_bg
 from contextlib import contextmanager
-from modules import airtable_functions
+from modules import airtable_functions, expander_functions
 import phonenumbers
 import re
 
@@ -120,6 +120,8 @@ with GOLD_TAB:
 
             family_gold_form_submitted = st.form_submit_button(family_gold_form_button_label, icon=family_gold_form_button_icon, disabled=is_family_gold_disabled)
 
+        expander_functions.info_expander("family_gold_map", "family_gold_segment")
+
         @st.dialog("Confirm Booking", width="small")
         def show_family_gold_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
             st.write(f"Are you sure you want to confirm the booking for **{first_name} {last_name}**?")
@@ -226,6 +228,8 @@ with PLATINUM_TAB:
 
             family_platinum_form_submitted = st.form_submit_button(family_platinum_form_button_label, icon=family_platinum_form_button_icon, disabled=is_family_platinum_disabled)
 
+        expander_functions.info_expander("family_platinum_map", "family_platinum_segment")
+
         @st.dialog("Confirm Booking", width="small")
         def show_family_platinum_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
             st.write(f"Are you sure you want to confirm the booking for **{first_name} {last_name}**?")
@@ -331,6 +335,8 @@ with DIAMOND_TAB:
             family_diamond_form_button_icon = ":material/add_shopping_cart:" if not is_family_diamond_disabled else ":material/block:"
 
             family_diamond_form_submitted = st.form_submit_button(family_diamond_form_button_label, icon=family_diamond_form_button_icon, disabled=is_family_diamond_disabled)
+
+        expander_functions.info_expander("family_diamond_map", "family_diamond_segment")
 
         @st.dialog("Confirm Booking", width="small")
         def show_family_diamond_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):

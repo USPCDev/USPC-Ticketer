@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_phone_number import st_phone_number
 from utils import ticketer_bg
 from contextlib import contextmanager
-from modules import airtable_functions
+from modules import airtable_functions, expander_functions
 import phonenumbers
 import re
 
@@ -119,6 +119,8 @@ with GOLD_TAB:
             single_gold_form_button_icon = ":material/add_shopping_cart:" if not is_single_gold_disabled else ":material/block:"
             
             single_gold_form_submitted = st.form_submit_button(single_gold_form_button_label, icon=single_gold_form_button_icon, disabled=is_single_gold_disabled)
+
+        expander_functions.info_expander("single_gold_map", "single_gold_segment")
         
         @st.dialog("Confirm Booking", width="small")
         def show_single_gold_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
@@ -226,6 +228,8 @@ with PLATINUM_TAB:
 
             single_platinum_form_submitted = st.form_submit_button(single_platinum_form_button_label, icon=single_platinum_form_button_icon, disabled=is_single_platinum_disabled)
 
+        expander_functions.info_expander("single_platinum_map", "single_platinum_segment")
+
         @st.dialog("Confirm Booking", width="small")
         def show_single_platinum_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
             st.write(f"Are you sure you want to confirm the booking for **{first_name} {last_name}**?")
@@ -331,6 +335,8 @@ with DIAMOND_TAB:
             single_diamond_form_button_icon = ":material/add_shopping_cart:" if not is_single_diamond_disabled else ":material/block:"
 
             single_diamond_form_submitted = st.form_submit_button(single_diamond_form_button_label, icon=single_diamond_form_button_icon, disabled=is_single_diamond_disabled)
+
+        expander_functions.info_expander("single_diamond_map", "single_diamond_segment")
 
         @st.dialog("Confirm Booking", width="small")
         def show_single_diamond_confirm_dialog(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula):
