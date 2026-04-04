@@ -36,7 +36,7 @@ def main():
     # Hides the streamlit main menu items
     st.html("""
                 <style>
-                    .stToolbarActions {visibility: collapse;}
+                    .stToolbarActions {visibility: hidden;}
                 </style>
             """)
 
