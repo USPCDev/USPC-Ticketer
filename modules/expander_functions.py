@@ -6,7 +6,7 @@ from modules import doc_functions
 def info_expander(map_key, segmented_key):
     with st.expander("Very Important Info (Click here to open)!", icon=":material/info:", expanded=False):
 
-        VENUE_DETAILS_TAB, TARIFF_DETAILS_TAB, TICKETS_INFO_TAB, TERMS_AND_CONDITIONS_TAB, PRIVACY_POLICY_TAB, SUPPORT_TEAM_TAB = st.tabs(["Venue Details", "Tariff Details", "Tickets Info", "Terms & Conditions", "Privacy Policy", "Support Team"], width="stretch")
+        VENUE_DETAILS_TAB, TARIFF_DETAILS_TAB, TICKETS_INFO_TAB, SUPPORT_TEAM_TAB = st.tabs(["Venue Details", "Tariff Details", "Tickets Info", "Support Team"], width="stretch")
 
         with VENUE_DETAILS_TAB:
             st.subheader("Venue Details", divider="grey")
@@ -78,11 +78,11 @@ def info_expander(map_key, segmented_key):
 
             st.markdown("* Please make sure that once an order has been confirmed, the payment must be made within 7 days, otherwise, the ticket will be available for other users to buy. You may need to initiate a fresh booking.")
 
-        with TERMS_AND_CONDITIONS_TAB:
-            doc_functions.terms_and_conditions()
+        #with TERMS_AND_CONDITIONS_TAB:
+            #doc_functions.terms_and_conditions()
 
-        with PRIVACY_POLICY_TAB:
-            doc_functions.privacy_policy()
+        #with PRIVACY_POLICY_TAB:
+            #doc_functions.privacy_policy()
 
         with SUPPORT_TEAM_TAB:
             st.subheader("Support Team", divider="grey")
