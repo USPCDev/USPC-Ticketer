@@ -27,6 +27,7 @@ def select_booking():
 asset_gen.home_logo("assets/USPC_LOGO.png")
 asset_gen.home_title("Voice of Grace - 2026")
 asset_gen.sub_home_title("September 25, 2026")
+asset_gen.sub_home_title("September 25, 2026")
 
 st.divider()
 
