@@ -6,12 +6,12 @@ from utils import ticketer_bg
 def main():
     st.set_page_config(
         page_title="USPC Ticketer",
-        page_icon="🎟️",
+        page_icon="assets/USPC_LOGO.png",
         initial_sidebar_state="auto",
         layout="centered",
         menu_items={
             "Report a bug": "mailto:jeffrygeorge58@gmail.com",
-            "About": "USPC Manchester's Official Ticket Booking Application v1.2 ® 2026. All Rights Reserved."
+            "About": "USPC Manchester's Official Ticket Booking Application v2.0 ® 2026. All Rights Reserved."
         }
     )
 
