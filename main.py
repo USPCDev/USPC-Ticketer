@@ -73,6 +73,7 @@ def main():
         st.Page("pages/family_main.py"),
         st.Page("pages/offline_single_main.py"),
         st.Page("pages/offline_family_main.py"),
+        st.Page("pages/payment_return.py"),
         st.Page("pages/dev_tools.py")
     ]
 

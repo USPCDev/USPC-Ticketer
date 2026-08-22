@@ -2,14 +2,14 @@ import streamlit as st
 from streamlit_phone_number import st_phone_number
 from utils import ticketer_bg
 from contextlib import contextmanager
-from modules import airtable_functions, expander_functions
+from modules import airtable_functions, expander_functions, stripe_functions
 import phonenumbers
 import re
 
 #ticketer_bg.enable_svg_bg()
 
 def booking_success_message(name, email, order_id, ticket_type, ticket_price):
-    return f"##### Thank you for placing an order, **{name}**!\nYour order details will be sent to your email, **{email}**, shortly. If you haven't received any order confirmation email, please contact the support team whose numbers are provided in the homepage. Please pay the required *amount* using the correct *reference*, as provided below, in the mentioned bank details. Thank you once again!\n##### Order Summary:\nBooking Type: **{ticket_type}**\n\nReference No.: **{order_id}**\n\nPrice: **£{ticket_price}.00**\n##### Bank Details:\nAccount Name: **United Shalom Pentecostal Church**\n\nAccount No.: **01724037**\n\nSort Code: **40-31-30**\n\nOnce payment has been made, our back office team will verify it, and upon successful verification, the **ticket** will be sent to your email."
+    return f"##### Thank you for placing an order, **{name}**!\nYour booking has been reserved for **{email}** and is currently pending payment. Please complete payment securely using Stripe.\n##### Order Summary:\nBooking Type: **{ticket_type}**\n\nReference No.: **{order_id}**\n\nPrice: **£{ticket_price}.00**\n\nOnce Stripe payment is completed, you will be redirected back to this app and your booking will be marked as **Paid**. Your ticket will then be sent to your email."
 
 def mobile_number_verifier(mobile_number):
     try:
@@ -79,6 +79,10 @@ with GOLD_TAB:
         del st.session_state.booked_order_id_family_gold
         del st.session_state.booked_ticket_type_family_gold
         del st.session_state.booked_ticket_price_family_gold
+        family_gold_checkout_url = st.session_state.get("booked_checkout_url_family_gold")
+        if family_gold_checkout_url:
+            st.link_button("Pay securely with Stripe", family_gold_checkout_url, type="primary", icon=":material/payment:", width="stretch")
+            del st.session_state.booked_checkout_url_family_gold
         if "pending_booking_family_gold" in st.session_state:
             del st.session_state.pending_booking_family_gold
 
@@ -129,14 +133,24 @@ with GOLD_TAB:
             with st_horizontal():
                 if st.button("Confirm", type="primary", width="stretch", key="family_gold_confirm_button"):
                     try:
-                        order_id, ticket_type, ticket_price = airtable_functions.airtable_family_ticket_assigner(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula)
+                        booking = airtable_functions.airtable_create_pending_stripe_booking(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula)
+                        checkout_session = stripe_functions.create_checkout_session(
+                            customer_email=email,
+                            ticket_type=form_ticket_type,
+                            order_record_id=booking["order_record_id"],
+                            ticket_record_id=booking["ticket_record_id"],
+                            order_table_name=booking["order_table_name"],
+                            ticket_table_name=booking["ticket_table_name"],
+                        )
+                        airtable_functions.airtable_update_order_stripe_session(booking["order_table_name"], booking["order_record_id"], checkout_session["session_id"])
 
                         st.session_state.booking_success_family_gold = True
                         st.session_state.booked_name_family_gold = first_name
                         st.session_state.booked_email_family_gold = email
-                        st.session_state.booked_order_id_family_gold = order_id
-                        st.session_state.booked_ticket_type_family_gold = ticket_type
-                        st.session_state.booked_ticket_price_family_gold = ticket_price
+                        st.session_state.booked_order_id_family_gold = booking["order_id"]
+                        st.session_state.booked_ticket_type_family_gold = booking["ticket_type"]
+                        st.session_state.booked_ticket_price_family_gold = checkout_session["amount_in_pounds"]
+                        st.session_state.booked_checkout_url_family_gold = checkout_session["checkout_url"]
 
                         # RESET SESSION STATES OF INPUT ELEMENTS (This is manual reset rather than using clear_on_submit=True)
                         st.session_state.family_gold_counter_first_name = st.session_state.get('family_gold_counter_first_name', 0) + 1
@@ -185,6 +199,10 @@ with PLATINUM_TAB:
         del st.session_state.booked_order_id_family_platinum
         del st.session_state.booked_ticket_type_family_platinum
         del st.session_state.booked_ticket_price_family_platinum
+        family_platinum_checkout_url = st.session_state.get("booked_checkout_url_family_platinum")
+        if family_platinum_checkout_url:
+            st.link_button("Pay securely with Stripe", family_platinum_checkout_url, type="primary", icon=":material/payment:", width="stretch")
+            del st.session_state.booked_checkout_url_family_platinum
         if "pending_booking_family_platinum" in st.session_state:
             del st.session_state.pending_booking_family_platinum
 
@@ -235,14 +253,24 @@ with PLATINUM_TAB:
             with st_horizontal():
                 if st.button("Confirm", type="primary", width="stretch", key="family_platinum_confirm_button"):
                     try:
-                        order_id, ticket_type, ticket_price = airtable_functions.airtable_family_ticket_assigner(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula)
+                        booking = airtable_functions.airtable_create_pending_stripe_booking(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula)
+                        checkout_session = stripe_functions.create_checkout_session(
+                            customer_email=email,
+                            ticket_type=form_ticket_type,
+                            order_record_id=booking["order_record_id"],
+                            ticket_record_id=booking["ticket_record_id"],
+                            order_table_name=booking["order_table_name"],
+                            ticket_table_name=booking["ticket_table_name"],
+                        )
+                        airtable_functions.airtable_update_order_stripe_session(booking["order_table_name"], booking["order_record_id"], checkout_session["session_id"])
 
                         st.session_state.booking_success_family_platinum = True
                         st.session_state.booked_name_family_platinum = first_name
                         st.session_state.booked_email_family_platinum = email
-                        st.session_state.booked_order_id_family_platinum = order_id
-                        st.session_state.booked_ticket_type_family_platinum = ticket_type
-                        st.session_state.booked_ticket_price_family_platinum = ticket_price
+                        st.session_state.booked_order_id_family_platinum = booking["order_id"]
+                        st.session_state.booked_ticket_type_family_platinum = booking["ticket_type"]
+                        st.session_state.booked_ticket_price_family_platinum = checkout_session["amount_in_pounds"]
+                        st.session_state.booked_checkout_url_family_platinum = checkout_session["checkout_url"]
 
                         # RESET SESSION STATES OF INPUT ELEMENTS
                         st.session_state.family_platinum_counter_first_name = st.session_state.get('family_platinum_counter_first_name', 0) + 1
@@ -291,6 +319,10 @@ with DIAMOND_TAB:
         del st.session_state.booked_order_id_family_diamond
         del st.session_state.booked_ticket_type_family_diamond
         del st.session_state.booked_ticket_price_family_diamond
+        family_diamond_checkout_url = st.session_state.get("booked_checkout_url_family_diamond")
+        if family_diamond_checkout_url:
+            st.link_button("Pay securely with Stripe", family_diamond_checkout_url, type="primary", icon=":material/payment:", width="stretch")
+            del st.session_state.booked_checkout_url_family_diamond
         if "pending_booking_family_diamond" in st.session_state:
             del st.session_state.pending_booking_family_diamond
 
@@ -341,14 +373,24 @@ with DIAMOND_TAB:
             with st_horizontal():
                 if st.button("Confirm", type="primary", width="stretch", key="family_diamond_confirm_button"):
                     try:
-                        order_id, ticket_type, ticket_price = airtable_functions.airtable_family_ticket_assigner(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula)
+                        booking = airtable_functions.airtable_create_pending_stripe_booking(first_name, last_name, mobile_number, email, form_category, event_order_id, form_ticket_type, available_ticket_filter_formula)
+                        checkout_session = stripe_functions.create_checkout_session(
+                            customer_email=email,
+                            ticket_type=form_ticket_type,
+                            order_record_id=booking["order_record_id"],
+                            ticket_record_id=booking["ticket_record_id"],
+                            order_table_name=booking["order_table_name"],
+                            ticket_table_name=booking["ticket_table_name"],
+                        )
+                        airtable_functions.airtable_update_order_stripe_session(booking["order_table_name"], booking["order_record_id"], checkout_session["session_id"])
 
                         st.session_state.booking_success_family_diamond = True
                         st.session_state.booked_name_family_diamond = first_name
                         st.session_state.booked_email_family_diamond = email
-                        st.session_state.booked_order_id_family_diamond = order_id
-                        st.session_state.booked_ticket_type_family_diamond = ticket_type
-                        st.session_state.booked_ticket_price_family_diamond = ticket_price
+                        st.session_state.booked_order_id_family_diamond = booking["order_id"]
+                        st.session_state.booked_ticket_type_family_diamond = booking["ticket_type"]
+                        st.session_state.booked_ticket_price_family_diamond = checkout_session["amount_in_pounds"]
+                        st.session_state.booked_checkout_url_family_diamond = checkout_session["checkout_url"]
 
                         # RESET SESSION STATES OF INPUT ELEMENTS
                         st.session_state.family_diamond_counter_first_name = st.session_state.get('family_diamond_counter_first_name', 0) + 1
