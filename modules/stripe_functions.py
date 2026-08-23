@@ -2,7 +2,7 @@ import stripe
 import streamlit as st
 
 
-LOCAL_APP_URL = "http://localhost:8504"
+LOCAL_APP_URL = "https://uspc-ticketer.streamlit.app/"
 
 TICKET_PRICES_IN_PENCE = {
     "Single - Gold": 3000,
